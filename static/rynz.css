@@ -1,0 +1,148 @@
+/* Base styles for dark mode (default) */
+:root {
+    --bg-color: #121212;
+    --text-color: #00ff00;
+    --link-color: #00cc00;
+    --link-hover: #00ff99;
+    --glow: 0 0 8px #00ff00, 0 0 12px #00ff00;
+    --shadow: 0 0 4px rgba(0, 255, 0, 0.4);
+  }
+  
+  [data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --text-color: #006600;
+    --link-color: #009900;
+    --link-hover: #00cc00;
+    --glow: 0 0 8px #009900, 0 0 12px #009900;
+    --shadow: 0 0 4px rgba(0, 102, 0, 0.2);
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'VT323', monospace; /* Retro gaming font similar to rynz.de */
+    font-size: 1.2em;
+    margin: 0;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  header {
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--link-color);
+  }
+  
+  h1 a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 2em;
+    text-shadow: var(--glow);
+    transition: color 0.2s;
+  }
+  
+  h1 a:hover {
+    color: var(--link-hover);
+  }
+  
+  header ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+  }
+  
+  header ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  header ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    text-shadow: var(--shadow);
+  }
+  
+  header ul li a:hover {
+    color: var(--link-hover);
+    text-shadow: var(--glow);
+  }
+  
+  section {
+    max-width: 600px; /* Narrower content width like rynz.de */
+    margin: 20px auto;
+    padding: 0;
+  }
+  
+  section p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  section ul li {
+    margin: 15px 0;
+  }
+  
+  section ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  
+  section ul li a:hover {
+    color: var(--link-hover);
+    text-shadow: var(--glow);
+  }
+  
+  footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--link-color);
+    text-align: left;
+  }
+  
+  footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  footer ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  footer ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+  
+  footer ul li a:hover {
+    color: var(--link-hover);
+    text-shadow: var(--glow);
+  }
+  
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--link-color);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1em;
+    text-shadow: var(--shadow);
+    transition: all 0.3s;
+  }
+  
+  #theme-toggle:hover {
+    color: var(--link-hover);
+    border-color: var(--link-hover);
+    text-shadow: var(--glow);
+  }
+  
+  /* Import VT323 font for retro gaming aesthetic */
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
