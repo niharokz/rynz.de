@@ -35,5 +35,7 @@ deploy:
   only:
     - main
   script:
+    - echo $CLOUDFLARE_API_TOKEN
+    - echo $CLOUDFLARE_ACCOUNT_ID
     - curl -X POST "https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/rynz/deployments" \
       -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}"
