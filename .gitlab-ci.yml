@@ -24,6 +24,7 @@ build:
   artifacts:
     paths:
       - public/
+    expire_in: 1 min # Artifacts will expire in 1 minute
 
 test:
   stage: test
@@ -36,13 +37,13 @@ test:
   artifacts:
     paths:
       - test_output.txt
+    expire_in: 1 min # Test output expires in 1 minute
 
 deploy:
   stage: deploy
   only:
     - main
   script:
-    - curl -X POST "https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/rynz/deployments" \
-      -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}"
+    - echo "✅ Deployment triggered! Cloudflare Pages will automatically handle the build from the repository."
   dependencies:
     - build # Ensures deploy stage has access to the artifacts
