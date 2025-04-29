@@ -1,11 +1,11 @@
 
 # Mandatory Configuration
-title: rynz.de
-url: yourdomain.tld
+title: RYNZ - Really Your Note Zenerator
+url: rynz.de
 note_template: template/note_template.html
 home_template: template/home_template.html
 feed_template: template/feed_template.xml
-home_path: public
+home_path: publish
 content_path: content
 resource_path: static
 home_md: content/home.md
@@ -16,5 +16,7 @@ footer_md: content/footer.md
 site-title: rynz.de
 css: rynz.css
 js: rynz.js
-desc: Write anything that human and machine can understand.
+desc: A minimalist static site generator using Python and Jinja for fast, simple websites.
 mail: some@mail.com
+logo: logo.png
+logo144: logo144.png

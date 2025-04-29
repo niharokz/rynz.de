@@ -1,148 +1,255 @@
-/* Base styles for dark mode (default) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 :root {
-    --bg-color: #121212;
-    --text-color: #00ff00;
-    --link-color: #00cc00;
-    --link-hover: #00ff99;
-    --glow: 0 0 8px #00ff00, 0 0 12px #00ff00;
-    --shadow: 0 0 4px rgba(0, 255, 0, 0.4);
+  --bg-color: #fff;
+  --text-color: #333;
+  --link-color: #1a5f7a;
+  --border-color: #eee;
+  --card-bg: #f9fafb;
+  --muted-color: #555;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --link-color: #66d9cf; /* Brighter for better contrast */
+  --border-color: #333;
+  --card-bg: #2a2a2a;
+  --muted-color: #a0a0a0;
+}
+
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) {
+      --bg-color: #fff;
+      --text-color: #333;
+      --link-color: #1a5f7a;
+      --border-color: #eee;
+      --card-bg: #f9fafb;
+      --muted-color: #555;
   }
-  
-  [data-theme="light"] {
-    --bg-color: #f5f5f5;
-    --text-color: #006600;
-    --link-color: #009900;
-    --link-hover: #00cc00;
-    --glow: 0 0 8px #009900, 0 0 12px #009900;
-    --shadow: 0 0 4px rgba(0, 102, 0, 0.2);
-  }
-  
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'VT323', monospace; /* Retro gaming font similar to rynz.de */
-    font-size: 1.2em;
-    margin: 0;
-    padding: 20px;
-    transition: all 0.3s ease;
-  }
-  
-  header {
-    text-align: left;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--link-color);
-  }
-  
-  h1 a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 2em;
-    text-shadow: var(--glow);
-    transition: color 0.2s;
-  }
-  
-  h1 a:hover {
-    color: var(--link-hover);
-  }
-  
-  header ul {
-    list-style: none;
-    padding: 10px 0;
-    margin: 0;
-  }
-  
-  header ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  header ul li a {
-    color: var(--link-color);
-    text-decoration: none;
-    text-shadow: var(--shadow);
-  }
-  
-  header ul li a:hover {
-    color: var(--link-hover);
-    text-shadow: var(--glow);
-  }
-  
-  section {
-    max-width: 600px; /* Narrower content width like rynz.de */
-    margin: 20px auto;
-    padding: 0;
-  }
-  
-  section p {
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-  
-  section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  section ul li {
-    margin: 15px 0;
-  }
-  
-  section ul li a {
-    color: var(--link-color);
-    text-decoration: none;
-  }
-  
-  section ul li a:hover {
-    color: var(--link-hover);
-    text-shadow: var(--glow);
-  }
-  
-  footer {
-    padding-top: 20px;
-    border-top: 1px solid var(--link-color);
-    text-align: left;
-  }
-  
-  footer ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  footer ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  footer ul li a {
-    color: var(--link-color);
-    text-decoration: none;
-  }
-  
-  footer ul li a:hover {
-    color: var(--link-hover);
-    text-shadow: var(--glow);
-  }
-  
-  #theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--link-color);
-    padding: 8px 12px;
-    cursor: pointer;
-    font-family: 'VT323', monospace;
-    font-size: 1em;
-    text-shadow: var(--shadow);
-    transition: all 0.3s;
-  }
-  
-  #theme-toggle:hover {
-    color: var(--link-hover);
-    border-color: var(--link-hover);
-    text-shadow: var(--glow);
-  }
-  
-  /* Import VT323 font for retro gaming aesthetic */
-  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s;
+}
+
+.logo img {
+  height: 32px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  margin: 0.5rem 1rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a:focus, button:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.theme-toggle {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+  background: var(--card-bg);
+  border: none;
+  border-radius: 5px;
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background: var(--link-color);
+  color: var(--bg-color);
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.hero h2 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  color: var(--muted-color);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--link-color);
+  color: var(--bg-color);
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background: var(--muted-color);
+}
+
+.section {
+  padding: 2rem 0;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section h2 {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--link-color);
+}
+
+.section h3 {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 500;
+  margin: 1rem 0 0.5rem;
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  counter-reset: step;
+}
+
+.process-step {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.process-step h3::before {
+  content: counter(step) ". ";
+  counter-increment: step;
+}
+
+.process-step p, .section p {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+ul li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--link-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+pre {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  transition: background 0.3s;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+}
+
+.badges img {
+  margin-right: 0.5rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-color);
+  font-size: 0.9rem;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .hero h2 { font-size: clamp(1.2rem, 4vw, 1.5rem); }
+  .hero p { font-size: 0.9rem; }
+  nav { margin-top: 1rem; justify-content: flex-start; }
+  nav img { margin: 0 auto; }
+}
+
+@media print {
+  nav, .theme-toggle, .hero img, .gallery { display: none; }
+  body { background: #fff; color: #000; }
+  .section { padding: 1rem 0; }
+}
