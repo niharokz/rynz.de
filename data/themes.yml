@@ -1,0 +1,22 @@
+# One home page per theme: same HTML, different stylesheet.
+# css can be one file or a list. The first entry is the default (index.html); plugins/themes.py builds the rest.
+- name: nss
+  page: index.html
+  url: /
+  css: [/themes/nss.min.css, /themes/nss-site.css]
+- name: future
+  page: future.html
+  url: /future.html
+  css: /themes/future.css
+- name: "1997"
+  page: 1997.html
+  url: /1997.html
+  css: /themes/1997.css
+- name: brutalist
+  page: brutalist.html
+  url: /brutalist.html
+  css: /themes/brutalist.css
+- name: terminal
+  page: terminal.html
+  url: /terminal.html
+  css: /themes/terminal.css

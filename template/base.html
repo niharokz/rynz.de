@@ -1,0 +1,25 @@
+{% set themes = site.data.themes or [] %}
+{% set theme = theme or themes[0] %}
+{% set is_home = page.slug == "index" %}
+<!DOCTYPE html>
+<html lang="{{ config.language }}">
+<head>
+{% include "partials/head.html" %}
+</head>
+<body>
+{% if is_home and themes %}
+<menu aria-label="Theme">
+{% for t in themes %}<li><a href="{{ t.url }}"{% if t.name == theme.name %} aria-current="page"{% endif %}>{{ t.name }}</a></li>
+{% endfor %}
+</menu>
+{% endif %}
+<header>
+<h1><a href="{{ theme.url if is_home else '/' }}">{{ site.title }}</a></h1>
+{% include "partials/nav.html" %}
+</header>
+{% block main %}{% endblock %}
+<footer>
+{% include "partials/footer.html" %}
+</footer>
+</body>
+</html>

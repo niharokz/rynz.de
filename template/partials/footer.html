@@ -1,0 +1,5 @@
+<nav>
+{% for item in config.footer_menu %}<a href="{{ item.url }}">{{ item.name }}</a>
+{% endfor %}
+</nav>
+<p>MIT licensed. Made by <a href="https://nih.ar">Nihar</a>. This site is built with {{ site.generator }}{% if is_home %} and styled by {{ theme.name }}{% endif %}.</p>

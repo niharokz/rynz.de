@@ -1,0 +1,4 @@
+<nav>
+{% for item in config.menu %}<a href="{{ item.url if is_home or not item.url.startswith('#') else '/' ~ item.url }}">{{ item.name }}</a>
+{% endfor %}
+</nav>

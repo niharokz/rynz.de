@@ -1,22 +1,47 @@
+# rynz.de — the rynz project site, built with rynz 2.0.
+# Run `rynz config` to see every setting with its default.
 
-# Mandatory Configuration
-title: RYNZ - Really Your Note Zenerator
-url: rynz.de
-note_template: template/note_template.html
-home_template: template/home_template.html
-feed_template: template/feed_template.xml
-home_path: publish
-content_path: content
-resource_path: static
-home_md: content/home.md
-header_md: content/header.md
-footer_md: content/footer.md
+title: rynz
+url: https://rynz.de
+description: A small static site generator. Markdown in, plain HTML out. No JavaScript, no tracking.
+author: Nihar
+email: support@rynz.de
+language: en
+image: /logo144.png
 
-# Optional Configuration
-site-title: rynz.de
-css: rynz.css
-js: rynz.js
-desc: A minimalist static site generator using Python and Jinja for fast, simple websites.
-mail: some@mail.com
-logo: logo.png
-logo144: logo144.png
+menu:
+  - name: features
+    url: "#features"
+  - name: start
+    url: "#start-a-site-in-a-minute"
+  - name: plugins
+    url: "#plugins"
+  - name: source
+    url: https://gitlab.com/niharokz/rynz
+
+footer_menu:
+  - name: pypi
+    url: https://pypi.org/project/rynz/
+  - name: gitlab
+    url: https://gitlab.com/niharokz/rynz
+  - name: issues
+    url: https://gitlab.com/niharokz/rynz/-/issues
+  - name: rss
+    url: /rss.xml
+
+markdown:
+  # markdown-in-html lets home.md group its Markdown into <section markdown="1"> blocks
+  extras:
+    - fenced-code-blocks
+    - tables
+    - footnotes
+    - header-ids
+    - cuddled-lists
+    - strike
+    - task_list
+    - code-friendly
+    - markdown-in-html
+
+# builds the home page once per theme listed in data/themes.yml
+plugins:
+  - plugins/themes.py

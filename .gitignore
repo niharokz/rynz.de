@@ -1,3 +1,4 @@
-publish
-gem
+public/
 *.bak
+.rynz-cache.json
+__pycache__/

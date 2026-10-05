@@ -1,0 +1,24 @@
+/* ── rynz.de layer on top of nss 3.0 ───────────────────── */
+/* theme tabs: a segmented control under the header bar */
+body>menu{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;margin:1.25rem auto 0;padding-inline:var(--nss-gutter);font:500 .8rem/1 var(--nss-mono)}
+body>menu::before{content:"theme";margin-right:.5rem;color:var(--nss-muted)}
+body>menu a{display:block;padding:.45rem .8rem;border:1px solid var(--nss-line);border-radius:999px;color:var(--nss-muted);text-decoration:none;background:var(--nss-surface);transition:border-color .2s,color .2s}
+body>menu a:hover{border-color:var(--nss-accent);color:var(--nss-fg)}
+body>menu a[aria-current]{border-color:var(--nss-accent);background:var(--nss-accent);color:var(--nss-on-accent)}
+/* sections breathe */
+main>section+section{margin-top:3.5rem}
+main>section>h2{scroll-margin-top:5rem}
+/* features: a grid of small cards instead of key-value rows */
+section:has(>#features)>ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.75rem;padding:0;list-style:none}
+section:has(>#features)>ul>li{display:block;margin:0;padding:1rem 1.1rem;border:1px solid var(--nss-line);border-radius:var(--nss-radius);background:var(--nss-surface);color:var(--nss-muted);font-size:.92rem;line-height:1.55}
+section:has(>#features)>ul>li>strong:first-child{display:block;margin-bottom:.3rem;font:600 .98rem/1.35 var(--nss-sans);color:var(--nss-fg)}
+section:has(>#features)>ul>li::marker{content:none}
+/* highlighted code keeps its token colours but sits on the nss surface */
+pre[style]{background:var(--nss-surface)!important;color:var(--nss-fg)!important}
+/* the hero's install block reads as the main call to action */
+main>section:first-child>pre{margin-top:1.75rem}
+main>section:first-child>p:last-child{display:flex;flex-wrap:wrap;gap:.6rem}
+main>section:first-child>p:last-child a{padding:.55rem 1.1rem;border:1px solid var(--nss-line);border-radius:var(--nss-radius);background:var(--nss-surface);text-decoration:none;font-weight:600}
+main>section:first-child>p:last-child a:first-child{border-color:var(--nss-accent);background:var(--nss-accent);color:var(--nss-on-accent)}
+main>section:first-child>p:last-child a:hover{border-color:var(--nss-accent)}
+footer>p{font:.8rem/1.6 var(--nss-mono);color:var(--nss-muted)}

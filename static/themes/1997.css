@@ -1,0 +1,97 @@
+/* rynz.de theme: 1997 — a Windows 95 desktop. Every section is a window. Classless, no JavaScript. */
+:root{
+  --desktop:#008080; --face:#c0c0c0; --light:#fff; --shade:#808080; --dark:#000; --title:#000080; --title-2:#1084d0;
+  --ui:Tahoma,"MS Sans Serif",Geneva,Verdana,sans-serif;
+  --page:"Times New Roman",Times,serif;
+  --tt:"Courier New",Courier,monospace;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding:12px 8px 40px;background:var(--desktop);color:var(--dark);font:16px/1.45 var(--page)}
+body>*{max-width:800px;margin-inline:auto}
+::selection{background:var(--title);color:#fff}
+:focus-visible{outline:1px dotted #000;outline-offset:-4px}
+a{color:#0000ee}
+a:visited{color:#551a8b}
+a:active{color:#f00}
+
+/* the raised 3D bevel, used for windows, buttons and tabs */
+body>menu a,main>section,body>header,body>footer,section:has(>#features)>ul>li,main>section:first-child>p:last-child a{
+  background:var(--face);border:2px solid;border-color:var(--light) var(--dark) var(--dark) var(--light);box-shadow:inset 1px 1px 0 #dfdfdf,inset -1px -1px 0 var(--shade)}
+
+/* theme tabs: a property-sheet tab strip */
+body>menu{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0;margin:0 auto -2px;padding:0 4px;list-style:none;font:11px/1 var(--ui);position:relative;z-index:1}
+body>menu::before{content:"Display Properties:";align-self:center;margin-right:8px;color:#fff;font-weight:bold;text-shadow:1px 1px 0 #000}
+body>menu li{margin:0 -2px 0 0}
+body>menu a{display:block;padding:5px 12px 4px;border-bottom:0;border-radius:3px 3px 0 0;color:#000;text-decoration:none;box-shadow:inset 1px 1px 0 #dfdfdf}
+body>menu a:visited{color:#000}
+body>menu a[aria-current]{position:relative;padding:7px 14px 6px;margin-bottom:-2px;font-weight:bold;z-index:2}
+
+/* header: the main browser window title */
+body>header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;padding:3px 3px 6px;margin-bottom:12px}
+header>h1{flex:1 1 100%;margin:0;padding:3px 6px;font:bold 13px/18px var(--ui);color:#fff;background:linear-gradient(90deg,var(--title),var(--title-2))}
+header>h1::before{content:"\1F310  ";}
+header>h1::after{content:"- Netscape Navigator";font-weight:normal;margin-left:6px}
+header>h1 a,header>h1 a:visited{color:#fff;text-decoration:none}
+header>nav{display:flex;flex-wrap:wrap;gap:0 2px;padding:2px 4px;font:12px var(--ui)}
+header>nav a{padding:2px 6px;color:#000;text-decoration:none}
+header>nav a:visited{color:#000}
+header>nav a:first-letter{text-decoration:underline}
+header>nav a:hover{background:var(--title);color:#fff}
+
+/* every section is a window; its h2 is the title bar */
+main>section{margin:0 0 14px;padding:3px 3px 12px}
+main>section>*{margin-left:10px;margin-right:10px}
+main>section>h2{display:flex;justify-content:space-between;align-items:center;margin:0 0 10px;padding:3px 3px 3px 6px;font:bold 13px/18px var(--ui);color:#fff;background:linear-gradient(90deg,var(--title),var(--title-2))}
+main>section>h2::after{content:"_ \25A1  \2715";padding:0 4px;font:bold 11px/14px var(--ui);color:#000;background:var(--face);border:1px solid;border-color:var(--light) var(--dark) var(--dark) var(--light);letter-spacing:4px;white-space:pre}
+
+/* the hero: a classic welcome page in a white document window */
+main>section:first-child{padding:20px 22px 22px;text-align:center;background:#fff}
+main>section:first-child>*{margin-left:0;margin-right:0}
+main>section:first-child::before{content:"Welcome to my homepage!";display:block;margin-bottom:6px;font:italic bold 15px var(--page);color:#f00}
+main>section:first-child>p:first-child{margin:0 0 14px;font:bold clamp(30px,6vw,46px)/1.1 var(--page);color:var(--title);text-shadow:2px 2px 0 #c0c0c0}
+main>section:first-child>p:nth-child(2){max-width:600px;margin:0 auto 14px}
+main>section:first-child>pre{max-width:420px;margin:0 auto 16px;text-align:left}
+main>section:first-child>p:last-child{margin-bottom:0}
+main>section:first-child>p:last-child a,main>section:first-child>p:last-child a:visited{display:inline-block;margin:4px 6px;padding:4px 14px;color:#000;text-decoration:none;font:12px var(--ui)}
+main>section:first-child>p:last-child a:active{border-color:var(--dark) var(--light) var(--light) var(--dark)}
+main>section:first-child::after{content:"";display:block;height:2px;margin:18px 0 6px;border-top:1px solid var(--shade);border-bottom:1px solid var(--light)}
+
+h2,h3{font-family:var(--page)}
+h3{font-size:18px}
+p,ul,ol,table,pre{margin-top:0;margin-bottom:12px}
+ul{list-style:square}
+li{margin:3px 0}
+strong{font-weight:bold}
+
+/* features: a toolbar of icon buttons */
+section:has(>#features)>ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px;padding:0;list-style:none}
+section:has(>#features)>ul>li{margin:0;padding:8px 10px;font:13px/1.35 var(--ui)}
+section:has(>#features)>ul>li>strong:first-child{display:block;margin-bottom:3px;color:var(--title)}
+section:has(>#features)>ul>li>strong:first-child::before{content:"\1F4C4  ";}
+
+/* code: a sunken white text field, no colours (it is 1997) */
+code,samp,kbd{font:14px var(--tt)}
+pre{overflow-x:auto;padding:8px 10px;background:#fff!important;color:#000!important;border:2px solid;border-color:var(--shade) var(--light) var(--light) var(--shade);box-shadow:inset 1px 1px 0 var(--dark);line-height:1.35}
+pre span{color:inherit!important}
+:not(pre)>code{color:#800000}
+
+/* tables with the old border=1 look */
+table{border:2px solid;border-color:var(--light) var(--shade) var(--shade) var(--light);border-spacing:2px;background:var(--face);font-size:15px;display:block;overflow-x:auto}
+@media (min-width:640px){table{display:table;width:calc(100% - 20px)}}
+th{padding:3px 6px;font:bold 12px var(--ui);background:var(--face);border:1px solid;border-color:var(--light) var(--shade) var(--shade) var(--light);text-align:left}
+td{padding:3px 6px;background:#fff;border:1px solid;border-color:var(--shade) var(--light) var(--light) var(--shade);vertical-align:top}
+
+time{font:13px var(--tt);color:#008000;margin-right:6px}
+time::before{content:"NEW! ";color:#f00;font:bold 12px var(--ui)}
+
+/* note pages built with this theme */
+article{padding:16px 20px;background:#fff;border:2px solid #000}
+
+/* footer: the status bar */
+body>footer{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;padding:3px 6px;font:11px/18px var(--ui)}
+footer>nav{display:flex;gap:10px;flex-wrap:wrap}
+footer>p{flex:1;margin:0;padding:0 6px;border:1px solid;border-color:var(--shade) var(--light) var(--light) var(--shade)}
+body>footer::after{content:"Best viewed in Netscape Navigator 4 at 800\00D7 600";flex:1 1 100%;padding:0 6px;border:1px solid;border-color:var(--shade) var(--light) var(--light) var(--shade)}
+@media (max-width:480px){body>menu::before{display:none}body>menu a{padding:5px 9px 4px}body>menu a[aria-current]{padding:7px 10px 6px}}

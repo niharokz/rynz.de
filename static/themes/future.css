@@ -1,0 +1,119 @@
+/* rynz.de theme: future — glass panels over a neon horizon. Classless, no JavaScript. */
+@font-face{font-family:Orbitron;font-weight:700;font-display:swap;src:url(fonts/orbitron-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:400;font-display:swap;src:url(fonts/space-grotesk-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Space Grotesk";font-weight:600;font-display:swap;src:url(fonts/space-grotesk-latin-600-normal.woff2) format("woff2")}
+
+:root{
+  --void:#04050d; --deep:#0b0d24; --glass:rgba(22,26,62,.52); --edge:rgba(140,155,255,.18);
+  --text:#e9ebff; --dim:#959bd0; --cyan:#4ff0ff; --magenta:#ff3dcb; --violet:#8b5cff;
+  --display:Orbitron,"Segoe UI",system-ui,sans-serif;
+  --body:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--void);scroll-behavior:smooth;scroll-padding-top:5rem;-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;color:var(--text);font:400 17px/1.7 var(--body);
+  background:
+    radial-gradient(60rem 30rem at 85% -10%,rgba(139,92,255,.30),transparent 60%),
+    radial-gradient(50rem 30rem at -10% 20%,rgba(79,240,255,.14),transparent 60%),
+    linear-gradient(180deg,var(--void),var(--deep) 60%,#140a2a) fixed;
+  overflow-x:hidden;
+}
+/* the horizon: a perspective grid floor fixed to the bottom of the screen */
+body::before{
+  content:"";position:fixed;z-index:-1;left:-50%;right:-50%;bottom:-2px;height:55vh;
+  background-image:linear-gradient(rgba(79,240,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,61,203,.30) 1px,transparent 1px);
+  background-size:64px 64px;transform:perspective(320px) rotateX(64deg);transform-origin:50% 100%;
+  -webkit-mask-image:linear-gradient(transparent,#000 70%);mask-image:linear-gradient(transparent,#000 70%);
+  animation:drive 6s linear infinite;
+}
+@keyframes drive{to{background-position:0 64px,0 0}}
+body>*{width:100%;max-width:64rem;margin-inline:auto;padding-inline:1.25rem}
+::selection{background:var(--magenta);color:#fff}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+
+/* theme tabs: a glass segmented control */
+body>menu{display:flex;flex-wrap:wrap;gap:.25rem;width:fit-content;max-width:calc(100% - 2.5rem);margin:1.25rem auto 0;padding:.3rem;list-style:none;
+  border:1px solid var(--edge);border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);font:600 .78rem/1 var(--body);letter-spacing:.04em}
+body>menu li{margin:0}
+body>menu a{display:block;padding:.55rem 1rem;border-radius:999px;color:var(--dim);text-decoration:none;transition:color .2s,background .2s}
+body>menu a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+body>menu a[aria-current]{color:#05060f;background:linear-gradient(90deg,var(--cyan),var(--magenta));box-shadow:0 0 18px rgba(79,240,255,.45)}
+
+/* header */
+body>header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.25rem}
+header>h1{margin:0;font:700 1.15rem/1 var(--display);letter-spacing:.18em}
+header>h1 a{color:var(--text);text-decoration:none}
+header>h1 a::after{content:"";display:inline-block;width:.45em;height:.45em;margin-left:.4em;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+header>nav{display:flex;gap:1.25rem;flex-wrap:wrap}
+header>nav a{color:var(--dim);text-decoration:none;font-size:.92rem}
+header>nav a:hover{color:var(--cyan)}
+
+/* hero */
+main>section:first-child{padding:5rem 0 3rem;text-align:center}
+main>section:first-child>p:first-child{margin:0 auto;max-width:14ch;font:700 clamp(2.4rem,7vw,4.6rem)/1.08 var(--display);letter-spacing:.01em;
+  background:linear-gradient(100deg,#fff 20%,var(--cyan) 55%,var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 28px rgba(79,240,255,.25))}
+main>section:first-child>p:nth-child(2){max-width:38rem;margin:1.75rem auto 0;color:var(--dim);font-size:1.12rem}
+main>section:first-child>pre{max-width:30rem;margin:2.25rem auto 1.5rem;text-align:left}
+main>section:first-child>p:last-child{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem}
+main>section:first-child>p:last-child a{display:inline-block;padding:.6rem 1.2rem;border-radius:999px;font-weight:600;text-decoration:none;color:var(--text);border:1px solid var(--edge);background:var(--glass)}
+main>section:first-child>p:last-child a:first-child{color:#05060f;border-color:transparent;background:linear-gradient(90deg,var(--cyan),var(--magenta))}
+main>section:first-child>p:last-child a:hover{box-shadow:0 0 22px rgba(255,61,203,.4)}
+
+/* every other section is a glass panel */
+main>section+section{position:relative;margin:2rem 0;padding:2rem clamp(1.25rem,4vw,2.5rem);border:1px solid var(--edge);border-radius:20px;background:var(--glass);backdrop-filter:blur(16px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 50px rgba(0,0,0,.35)}
+main>section+section::before{content:"";position:absolute;inset:-1px -1px auto;height:2px;border-radius:20px 20px 0 0;background:linear-gradient(90deg,transparent,var(--cyan),var(--magenta),transparent)}
+h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.04em;line-height:1.25}
+h2{margin:0 0 1.25rem;font-size:clamp(1.25rem,3vw,1.6rem)}
+h3{font-size:1.05rem}
+p,ul,ol,table,pre{margin:0 0 1.15rem}
+section>:last-child{margin-bottom:0}
+a{color:var(--cyan);text-underline-offset:3px;text-decoration-color:rgba(79,240,255,.4)}
+a:hover{color:#fff;text-decoration-color:var(--magenta)}
+strong{color:#fff;font-weight:600}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+li::marker{color:var(--magenta)}
+ol>li::marker{font:600 .9em var(--mono);color:var(--cyan)}
+
+/* features grid */
+section:has(>#features)>ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(14.5rem,1fr));gap:.8rem;padding:0;list-style:none}
+section:has(>#features)>ul>li{margin:0;padding:1.1rem 1.15rem;border:1px solid var(--edge);border-radius:14px;background:rgba(10,12,32,.55);color:var(--dim);font-size:.93rem;line-height:1.55;transition:border-color .25s,transform .25s}
+section:has(>#features)>ul>li:hover{border-color:rgba(79,240,255,.55);transform:translateY(-2px)}
+section:has(>#features)>ul>li>strong:first-child{display:block;margin-bottom:.35rem;color:var(--text);font-size:1rem}
+
+/* code */
+code,kbd,samp{font-family:var(--mono);font-size:.88em}
+:not(pre)>code{padding:.12em .4em;border-radius:6px;background:rgba(79,240,255,.09);color:var(--cyan);border:1px solid rgba(79,240,255,.18)}
+pre{position:relative;overflow-x:auto;padding:2.4rem 1.25rem 1.1rem;border:1px solid var(--edge);border-radius:14px;background:rgba(3,4,12,.75)!important;color:#e9ebff!important;font-size:.85rem;line-height:1.65}
+pre::before{content:"";position:absolute;top:.9rem;left:1.1rem;width:.6rem;height:.6rem;border-radius:50%;background:var(--magenta);box-shadow:1rem 0 0 var(--violet),2rem 0 0 var(--cyan)}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:.92rem;display:block;overflow-x:auto}
+@media (min-width:40rem){table{display:table}}
+th{text-align:left;font:600 .78rem var(--body);letter-spacing:.08em;color:var(--cyan);border-bottom:1px solid rgba(79,240,255,.4)}
+th,td{padding:.6rem .75rem;vertical-align:top}
+td{border-bottom:1px solid var(--edge);color:var(--dim)}
+td:first-child{color:var(--text);white-space:nowrap}
+tr:hover td{background:rgba(255,255,255,.03)}
+
+/* news timeline and showcase */
+time{font:.85rem var(--mono);color:var(--magenta);margin-right:.75rem}
+
+/* note pages built with this theme */
+article{padding:3rem 0}
+article>h1{font:700 clamp(1.8rem,5vw,2.8rem)/1.15 var(--display)}
+
+footer{padding-block:3rem 4rem;color:var(--dim);font-size:.85rem;text-align:center}
+footer nav{display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:.75rem}
+footer a{color:var(--dim)}
+
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (max-width:30rem){
+  body>menu{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;max-width:calc(100% - 1.5rem)}
+  body>menu a{padding:.5rem .7rem;font-size:.72rem}
+}
