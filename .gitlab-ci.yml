@@ -1,12 +1,7 @@
-# Build with rynz and publish on GitLab Pages on every push to the default branch.
-image: python:3.10-slim
+# Check the site on every push. Cloudflare Pages does the publishing.
+image: python:3.13-slim
 
-pages:
+check:
   script:
     - pip install --quiet rynz
     - rynz build --check
-  artifacts:
-    paths:
-      - public
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

@@ -9,6 +9,10 @@ email: support@rynz.de
 language: en
 image: /logo144.png
 
+# Cloudflare Pages publishes the "publish" folder
+paths:
+  output: publish
+
 menu:
   - name: features
     url: "#features"

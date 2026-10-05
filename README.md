@@ -9,8 +9,19 @@ You need Python 3.10 or newer.
 ```bash
 pip install rynz
 rynz serve          # preview at http://127.0.0.1:5555
-rynz build --check  # build into public/ and check every link
+rynz build --check  # build into publish/ and check every link
 ```
+
+## Deploying
+
+Cloudflare Pages builds the site on every push to `main`:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `pip install rynz && rynz build --check` |
+| Build output directory | `publish` |
+
+GitLab CI runs the same check on every push, so a broken link shows up in GitLab too.
 
 ## How the theme tabs work
 
